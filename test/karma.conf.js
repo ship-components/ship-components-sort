@@ -28,7 +28,17 @@ module.exports = function(config) {
      * Which test files to run
      * @type {Array}
      */
-    files: ['test/*-test.js'],
+    files: [
+      './test/test-index.js'
+    ],
+
+    /**
+     * Setup webpack to handle require statements
+     * @type {Object}
+     */
+    preprocessors: {
+      './test/test-index.js': ['webpack']
+    },
 
     /**
      * Generate coverage data
@@ -41,14 +51,7 @@ module.exports = function(config) {
       }, {
         type: 'lcovonly',
         subdir: '.'
-      }],
-    },
-    /**
-     * Setup webpack to handle require statements
-     * @type {Object}
-     */
-    preprocessors: {
-      'test/*-test.js': ['webpack'],
+      }]
     },
 
     /**
@@ -56,15 +59,22 @@ module.exports = function(config) {
      * @type {Array}
      */
     reporters: ['progress', 'coverage'],
-    
+
     /**
      * Webpack specific settings
      * @type {Object}
      */
     webpack: {
       cache: true,
-      devtool: 'inline-source-map',
-      module: {},
-    },
+      module: {
+        preLoaders: [
+          {
+            test: /\.js$/,
+            include: require('path').resolve('./src/Sort.js'),
+            loader: 'istanbul-instrumenter'
+          }
+        ]
+      }
+    }
   });
 };

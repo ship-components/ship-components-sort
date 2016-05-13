@@ -2,10 +2,10 @@
   "name": "ship-components-sort",
   "version": "0.1.0",
   "description": "Multiple sort function",
-  "main": "Sort.js",
+  "main": "src/Sort.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js --single-run",
-    "eslint" : "./node_modules/eslint/bin/eslint.js Sort.js",
+    "eslint": "./node_modules/eslint/bin/eslint.js Sort.js",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js -v"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "devDependencies": {
     "coveralls": "^2.11.9",
     "eslint": "^2.9.0",
+    "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine": "^2.4.1",
     "karma": "^0.13.22",
     "karma-coverage": "^1.0.0",

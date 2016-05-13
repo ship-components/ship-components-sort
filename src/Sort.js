@@ -114,5 +114,8 @@ function sortByDates() {
   };
 }
 
-module.exports = sortBy;
-module.exports.dates = sortByDates;
+// Export it if we're in a commonjs environment
+if (typeof module === 'object') {
+  module.exports = sortBy;
+  module.exports.dates = sortByDates;
+}

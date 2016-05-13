@@ -1,13 +1,14 @@
 # Sort
 Generates sort comparator function for the native Array.prototype.sort function
+
 [![Build Status](http://img.shields.io/travis/ship-components/ship-components-sort/master.svg?style=flat)](https://travis-ci.org/ship-components/ship-components-sort)
 [![Coverage](http://img.shields.io/coveralls/ship-components/ship-components-sort.svg?style=flat)](https://coveralls.io/github/ship-components)
 [![devDependencies](https://img.shields.io/david/dev/ship-components/ship-components-sort.svg?style=flat)](https://david-dm.org/ship-components/ship-components-sort#info=devDependencies)
 
 ## Usage
 
-```
-import Sort from 'ship-components-sort';
+```js
+var Sort = require('ship-components-sort');
 
 let data = [
   {

@@ -1,5 +1,5 @@
 describe('Sort', function(){
-  var Sort = require('../Sort');
+  var Sort = require('../src/Sort');
 
   it('should by a function', function(){
     expect(typeof Sort).toBe('function');
