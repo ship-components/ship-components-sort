@@ -15,12 +15,16 @@ describe('Sort', function(){
       },
       {
         name: 'Pickles'
+      },
+      {
+        name: 'Pickles'
       }
     ];
     var sorted = data.slice(0).sort(Sort('name'));
     expect(sorted[0].name).toBe(data[1].name);
     expect(sorted[1].name).toBe(data[0].name);
     expect(sorted[2].name).toBe(data[2].name);
+    expect(sorted[3].name).toBe(data[3].name);
   });
 
   it('should sort an array of objects by a key in reverse', function(){
@@ -94,4 +98,69 @@ describe('Sort', function(){
     expect(sorted[2].name).toBe(data[0].name);
   });
 
-})
+  it('should sort an array of objects by date', function(){
+    var data = [
+      {
+        name: 'Oranges',
+        createdAt: new Date(Date.now() + 1000)
+      },
+      {
+        name: 'Apples',
+        createdAt: new Date(Date.now() + 5000)
+      },
+      {
+        name: 'Pickles',
+        createdAt: new Date(Date.now() - 1000)
+      }
+    ];
+    var sorted = data.slice(0).sort(Sort('createdAt'));
+    expect(sorted[0].name).toBe(data[2].name);
+    expect(sorted[1].name).toBe(data[0].name);
+    expect(sorted[2].name).toBe(data[1].name);
+  });
+
+  describe('sortByDates', function(){
+    it('should sort an array of objects by date explicitly', function(){
+      var data = [
+        {
+          name: 'Oranges',
+          createdAt: new Date(Date.now() + 1000)
+        },
+        {
+          name: 'Apples',
+          createdAt: new Date(Date.now() + 5000)
+        },
+        {
+          name: 'Pickles',
+          createdAt: new Date(Date.now() - 1000)
+        }
+      ];
+
+      var sorted = data.slice(0).sort(Sort.dates('createdAt'));
+      expect(sorted[0].name).toBe(data[2].name);
+      expect(sorted[1].name).toBe(data[0].name);
+      expect(sorted[2].name).toBe(data[1].name);
+    });
+  });
+
+  it('should sort an array of objects by date strings', function(){
+    var data = [
+      {
+        name: 'Oranges',
+        createdAt: new Date(Date.now() + 1000).toString()
+      },
+      {
+        name: 'Apples',
+        createdAt: new Date(Date.now() + 5000).toString()
+      },
+      {
+        name: 'Pickles',
+        createdAt: new Date(Date.now() - 1000).toString()
+      }
+    ];
+    var sorted = data.slice(0).sort(Sort.dates('createdAt'));
+    expect(sorted[0].name).toBe(data[2].name);
+    expect(sorted[1].name).toBe(data[0].name);
+    expect(sorted[2].name).toBe(data[1].name);
+  });
+});
