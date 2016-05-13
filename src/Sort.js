@@ -62,7 +62,7 @@ function sortBy() {
       }
       prop = keys[keys.length - 1];
 
-      if (a[prop] instanceof Date && b[prop instanceof Date]) {
+      if (a[prop] instanceof Date && b[prop] instanceof Date) {
         return compareDates(a[prop], b[prop]) * direction;
       } else if (a[prop] && b[prop] && a[prop] > b[prop]) {
         return 1 * direction;
